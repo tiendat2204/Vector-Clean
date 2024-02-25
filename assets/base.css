@@ -1,0 +1,72 @@
+:root {
+    --white-color: #fff;
+    --black-color: #000;
+    --text-color: #333;
+    --primary-color: hwb(0 22% 21%);
+}
+
+* {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+    line-height: 1.5rem;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@-webkit-keyframes mymove {
+    from {
+        top: 200px;
+    }
+
+    to {
+        top: 400px;
+    }
+}
+
+
+@keyframes example {
+    0% {border: 2px solid #ccc; transform: scale(1);}
+    100% {border: 1px solid rgba(255, 255, 255, 0.3);  transform: scale(1.5);}
+}
+
+@keyframes exampleActive {
+    0%{
+        transform:rotate(0);
+    }
+    100%{
+        transform: rotate(20deg);
+    }
+    
+}
+
+
+
+@keyframes exampCategory {
+    0%{
+        opacity: 0;
+        transform:rotateY(-180deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0);
+    }
+    
+}
+

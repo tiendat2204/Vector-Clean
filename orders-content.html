@@ -1,0 +1,199 @@
+<!-- product-content.html -->
+
+<div class="app-content">
+    <div class="app-content-header">
+      <h1 class="app-content-headerText">Products</h1>
+      <button class="mode-switch" title="Switch Theme">
+        <svg
+          class="moon"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <defs></defs>
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  
+
+
+    <div class="app-content-actions">
+      <input class="search-bar" placeholder="Search..." type="text" />
+      <div class="app-content-actions-wrapper">
+        <div class="filter-button-wrapper">
+          <button class="action-button filter jsFilter">
+            <span>Filter</span
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-filter"
+            >
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+            </svg>
+          </button>
+          <div class="filter-menu">
+            <label>Category</label>
+            <select>
+              <option>All Categories</option>
+              <option>Furniture</option>
+              <option>Decoration</option>
+              <option>Kitchen</option>
+              <option>Bathroom</option>
+            </select>
+            <label>Status</label>
+            <select>
+              <option>All Status</option>
+              <option>Active</option>
+              <option>Disabled</option>
+            </select>
+            <div class="filter-menu-buttons">
+              <button class="filter-button reset">Reset</button>
+              <button class="filter-button apply">Apply</button>
+            </div>
+          </div>
+        </div>
+        <button class="action-button list active" title="List View">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-list"
+          >
+            <line x1="8" y1="6" x2="21" y2="6" />
+            <line x1="8" y1="12" x2="21" y2="12" />
+            <line x1="8" y1="18" x2="21" y2="18" />
+            <line x1="3" y1="6" x2="3.01" y2="6" />
+            <line x1="3" y1="12" x2="3.01" y2="12" />
+            <line x1="3" y1="18" x2="3.01" y2="18" />
+          </svg>
+        </button>
+        <button class="action-button grid" title="Grid View">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-grid"
+          >
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="products-area-wrapper tableView" id="ordersContainerAdmin">
+        <table id="orders-table">
+            <thead>
+              <tr>
+               
+                <th>Thông tin khách hàng</th>
+                <th>Trạng thái</th>
+                <th>Chi tiết sản phẩm</th>
+                <th>Thao tác</th>
+              </tr>
+            </thead>
+            <tbody id="orders-body">
+
+              <!-- <tr class="orders-row">    
+                <td class="infoUser-td">
+                  <div class="customer-info">
+                    <span class="customer-name"><strong>Họ và tên:</strong> TRIỆU TIẾN ĐẠT</span>
+                    <span class="customer-phone"><strong>Số điện thoại:</strong> 0354411541</span>
+                    <span class="customer-email"><strong>Email:</strong> tiendat220404@gmail.com</span>
+                    <span class="customer-address"><strong>Địa chỉ:</strong> 256/1/6 Dương Quảng Hàm</span>
+                  </div>
+                </td>
+                <td class="status-order-td">
+                  <span class="cell-label">Status:</span>
+                  <span class="status active">Đợi xác nhận</span>
+                </td>
+                <td class="order-detail-td">
+                  <div class="order-detail-all">
+                  <div class="order-detail-img">
+                    <img src="./assets/img/product-10.jpg" alt="Giày Nike Air Max" class="product-image-admin">
+                  </div>
+                  <div class="order-detail">
+                    <span class="product-detail"><strong>Sản phẩm:</strong> Giày Nike Air Max</span>
+                    <span class="product-price"><strong>Giá:</strong> 3,500,000 VNĐ</span>
+                    <span class="product-size"><strong>Size:</strong> 35</span>
+                    <span class="product-quantity"><strong>Số lượng:</strong> 1</span>
+                  </div>
+                </div>
+                </td>
+                <td class="function-td">
+                  <button class="change-btn">Chỉnh sửa</button>
+                  <button class="delete-btn">Xóa</button>
+                </td>
+              </tr> -->
+            </tbody>
+          </table>
+          <div id="edit-order-modal" class="modal-order">
+            <div class="modal-content">
+              <span class="close-btn-orders">&times;</span>
+                <div class="form-group">
+                    <label for="customer-name-input" class="form-label">Customer Name:</label>
+                    <input type="text" id="customer-name-input" class="form-input">
+                </div>
+        
+                <div class="form-group">
+                    <label for="customer-phone-input" class="form-label">Customer Phone:</label>
+                    <input type="text" id="customer-phone-input" class="form-input">
+                </div>
+        
+                <div class="form-group">
+                    <label for="customer-email-input" class="form-label">Customer Email:</label>
+                    <input type="text" id="customer-email-input" class="form-input">
+                </div>
+        
+                <div class="form-group">
+                    <label for="customer-address-input" class="form-label">Customer Address:</label>
+                    <input type="text" id="customer-address-input" class="form-input">
+                </div>
+        
+                <div class="form-group">
+                    <label for="order-status-select" class="form-label">Order Status:</label>
+                    <select id="order-status-select" class="form-select">
+                        <option value="Chờ xác nhận">Chờ xác nhận</option>
+                        <option value="Đang vận chuyển">Đang vận chuyển</option>
+                        <option value="Đã hoàn thành">Đã hoàn thành</option>
+                    </select>
+                </div>
+        
+                <button id="save-changes-btn-orders" class="form-btn-save-orders">Lưu</button>
+            </div>
+        </div>
+  </div>
+  <script>
+
+
+  </script>
+</body>
+
+
+</html>
