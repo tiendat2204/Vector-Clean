@@ -1,0 +1,294 @@
+{
+  "products": [
+    {
+      "name": "Giày Nike Air Max",
+      "price": "3500000",
+      "description": "ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.",
+      "categoryId": "2",
+      "status": "Active",
+      "image": "product-1.jpeg",
+      "id": "1"
+    },
+    {
+      "name": "Giày Nike Air Max",
+      "price": "3500000",
+      "description": "ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.",
+      "categoryId": "2",
+      "status": "Active",
+      "image": "product-2.jpg",
+      "id": "2"
+    },
+    {
+      "name": "Giày New Balance 574 Grey",
+      "price": "3100000",
+      "description": "ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.",
+      "categoryId": "2",
+      "status": "Active",
+      "image": "product-3.jpeg",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "name": "Giày Puma Suede",
+      "description": "Description for product 4",
+      "price": "2200000",
+      "status": "Active",
+      "image": "product-4.jpeg",
+      "categoryId": "3"
+    },
+    {
+      "id": "5",
+      "name": "Giày Reebok Classic",
+      "description": "Description for product 5",
+      "price": "2000000",
+      "status": "Active",
+      "image": "product-5.jpeg",
+      "categoryId": "2"
+    },
+    {
+      "id": "6",
+      "name": "Giày Vans Old Skool",
+      "description": "Description for product 6",
+      "price": "2700000",
+      "status": "Active",
+      "image": "product-6.png",
+      "categoryId": "1"
+    },
+    {
+      "name": "Giày New Balance 574 Grey",
+      "price": "3100000",
+      "description": "ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.",
+      "categoryId": "2",
+      "status": "Active",
+      "image": "product-7.webp",
+      "id": "7"
+    },
+    {
+      "name": "TRIỆU TIẾN ĐẠT",
+      "price": "2222",
+      "description": "ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ SỬ DỤNG CHẤT LIỆU TÁI CHẾ.",
+      "categoryId": "1",
+      "status": "Active",
+      "image": "product-8.jpg",
+      "id": "8"
+    },
+    {
+      "id": "9",
+      "name": "Giày Converse Chuck Taylor All Star",
+      "description": "Description for product 9",
+      "price": "2500000",
+      "status": "Active",
+      "image": "product-9.jpg",
+      "categoryId": "2"
+    },
+    {
+      "name": "Giày vip",
+      "price": "3333300",
+      "description": "Không có thông tin",
+      "categoryId": "3",
+      "status": "Active",
+      "image": "product-13.avif",
+      "id": "10"
+    },
+    {
+      "name": "Giày vip",
+      "price": "3333300",
+      "description": "Không có thông tin",
+      "categoryId": "3",
+      "status": "Active",
+      "image": "product-12.avif",
+      "id": "11"
+    },
+    {
+      "name": "TRIỆU TIẾN ĐẠT",
+      "price": "300000000",
+      "description": "ĐÔI GIÀY CHẠY BỘ ÊM ÁI CÓ bbvbgrffffff DỤNG CHẤT LIỆU TÁI CHẾ.",
+      "categoryId": "1",
+      "status": "Block",
+      "image": "1703503365399.2515.png",
+      "id": "12"
+    },
+    {
+      "name": "TRIỆU TIẾN ĐẠT",
+      "price": "321321",
+      "description": "hádyguisuhs",
+      "categoryId": "4",
+      "status": "Active",
+      "image": "1703503365399.2515.png",
+      "id": "13"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Adidas",
+      "status": "Active"
+    },
+    {
+      "name": "Nike",
+      "status": "Block",
+      "id": "2"
+    },
+    {
+      "name": "Yezze",
+      "status": "Active",
+      "id": "3"
+    },
+    {
+      "name": "Utras",
+      "status": "Active",
+      "id": "4"
+    },
+    {
+      "name": "vip",
+      "status": "Active",
+      "id": "5"
+    }
+  ],
+  "users": [
+    {
+      "id": "7",
+      "username": "gisil73858@jobsfeel.com",
+      "email": "datboydep01@gmail.com",
+      "password": "5",
+      "role": "admin"
+    },
+    {
+      "id": "8",
+      "username": "nkov123",
+      "email": "Datboyngeo@gmail.com",
+      "password": "1",
+      "role": "user"
+    }
+  ],
+  "orders": [
+    {
+      "id": "9",
+      "name": "TRIỆU TIẾN ĐẠT",
+      "phoneNumber": "0354411541",
+      "email": "tiendat220404@gmail.com",
+      "address": "256/1/6 dương quảng hàm",
+      "products": [
+        {
+          "id": "7",
+          "name": "Giày New Balance 574 Grey",
+          "price": "3100000",
+          "size": 35,
+          "image": "product-7.webp",
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "name": "Giày Vans Old Skool",
+          "price": "2700000",
+          "size": 35,
+          "image": "product-6.png",
+          "quantity": 1
+        }
+      ],
+      "userId": "7",
+      "status": "Đã hoàn thành",
+      "createdAt": "2024-02-18"
+    },
+    {
+      "id": "10",
+      "name": "dsad",
+      "phoneNumber": "03127y3",
+      "email": "datttps31485@fpt.edu.vn",
+      "address": "ádsasd",
+      "products": [
+        {
+          "id": "4",
+          "name": "Giày Puma Suede",
+          "price": "2200000",
+          "size": 35,
+          "image": "product-4.jpeg",
+          "quantity": 1
+        }
+      ],
+      "userId": "8",
+      "status": "Chờ xác nhận",
+      "createdAt": "2024-02-20"
+    },
+    {
+      "id": "11",
+      "name": "TRIỆU TIẾN ĐẠT23",
+      "phoneNumber": "0354411541",
+      "email": "tiendat220404@gmail.com",
+      "address": "256/1/6 dương quảng hàm",
+      "products": [
+        {
+          "id": "10",
+          "name": "Giày vip",
+          "price": "3333300",
+          "size": 35,
+          "image": "product-13.avif",
+          "quantity": 2
+        }
+      ],
+      "userId": "8",
+      "status": "Đã hoàn thành",
+      "createdAt": "2024-02-19"
+    },
+    {
+      "id": "12",
+      "name": "dsad@#$ kdkas",
+      "phoneNumber": "093213872",
+      "email": "datboyngeo@gmail.com",
+      "address": "k bt",
+      "products": [
+        {
+          "id": "3",
+          "name": "Giày New Balance 574 Grey",
+          "price": "3100000",
+          "size": 35,
+          "image": "product-3.jpeg",
+          "quantity": 7
+        }
+      ],
+      "userId": "8",
+      "status": "Chờ xác nhận",
+      "createdAt": "2024-02-22"
+    },
+    {
+      "id": "13",
+      "name": "TRIỆU TIẾN ĐẠT",
+      "phoneNumber": "0354411541",
+      "email": "tiendat220404@gmail.com",
+      "address": "256/1/6 dương quảng hàm",
+      "products": [
+        {
+          "id": "2",
+          "name": "Giày Nike Air Max",
+          "price": "3500000",
+          "size": 35,
+          "image": "product-2.jpg",
+          "quantity": 1
+        }
+      ],
+      "userId": "8",
+      "status": "Chờ xác nhận",
+      "createdAt": "2024-02-21"
+    },
+    {
+      "id": "14",
+      "name": "TRIỆU TIẾN ĐẠT",
+      "phoneNumber": "0354411541",
+      "email": "tiendat220404@gmail.com",
+      "address": "256/1/6 dương quảng hàm",
+      "products": [
+        {
+          "id": "8",
+          "name": "TRIỆU TIẾN ĐẠT",
+          "price": "2222",
+          "size": "42",
+          "image": "product-8.jpg",
+          "quantity": 46
+        }
+      ],
+      "userId": "7",
+      "status": "Chờ xác nhận",
+      "createdAt": "2024-02-20"
+    }
+  ]
+}
