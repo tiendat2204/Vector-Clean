@@ -71,18 +71,19 @@ function attachButtonEvents() {
     }
   });
 }
-
 async function editProduct(productId, categories) {
   const productToEdit = await getProductDetails(productId);
   fillEditForm(productToEdit, categories);
 
   const submitButton = document.querySelector("#editProduct .submit-save");
+
   const imageInput = document.getElementById("imageInput");
 
-  submitButton.addEventListener("click", async (event) => {
+  async function onSubmitButtonClick(event) {
     event.preventDefault();
 
     const editedProductData = getDataAdminEditProduct();
+    submitButton.removeEventListener("click", onSubmitButtonClick);
 
     if (imageInput && imageInput.files && imageInput.files.length > 0) {
       const newImageName = imageInput.files[0].name;
@@ -95,7 +96,9 @@ async function editProduct(productId, categories) {
     closeEditProduct();
     displayProductsAdmin();
     SuccessMessage("Chỉnh sửa sản phẩm thành công!");
-  });
+  }
+
+  submitButton.addEventListener("click", onSubmitButtonClick);
 }
 
 async function deleteProductId(productId) {

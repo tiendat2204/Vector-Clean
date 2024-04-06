@@ -13,14 +13,24 @@ import {
 import { getDataAdminEditCategory } from "../utils/getDataUtils.js";
 
 async function displayCategories() {
-  const categoryContainer = document.getElementById("categoryContainerAdminVip");
+  const categoryContainer = document.getElementById(
+    "categoryContainerAdminVip"
+  );
   try {
-    const [products, categories] = await Promise.all([fetchProducts(), fetchCategories()]);
+    const [products, categories] = await Promise.all([
+      fetchProducts(),
+      fetchCategories(),
+    ]);
     const categoryQuantityMap = products.reduce((map, product) => {
       map[product.categoryId] = (map[product.categoryId] || 0) + 1;
       return map;
     }, {});
-    const categoryMarkup = categories.map(category => createCategoryMarkup(category, categoryQuantityMap[category.id] || 0)).join('');
+   
+    const categoryMarkup = categories
+      .map((category) =>
+        createCategoryMarkup(category, categoryQuantityMap[category.id] || 0)
+      )
+      .join("");
     categoryContainer.innerHTML = categoryMarkup;
   } catch (error) {
     console.error("Lỗi khi hiển thị danh mục:", error);
@@ -51,18 +61,33 @@ async function editCategory(categoryId) {
   const categoryToEdit = await getCategoryDetails(categoryId);
   fillEditFormCategory(categoryToEdit);
 
-  const submitButton = document.querySelector("#editFormCategory .save-btn-category");
-  submitButton.addEventListener("click", async (event) => {
+  const submitButton = document.querySelector(
+    "#editFormCategory .save-btn-category"
+  );
+
+  async function onSubmitButtonClick(event) {
     event.preventDefault();
 
     const editedCategoryData = getDataAdminEditCategory();
-    await updateCategory(categoryId, editedCategoryData);
+    submitButton.removeEventListener("click", onSubmitButtonClick);
 
-    displayCategories();
-    closeEditCategoryModal();
-    SuccessMessage("Chỉnh sửa danh mục thành công!");
-  });
+    try {
+      await updateCategory(categoryId, editedCategoryData);
+
+      displayCategories();
+      
+      closeEditCategoryModal();
+
+      SuccessMessage("Chỉnh sửa danh mục thành công!");
+    } catch (error) {
+      console.error("Lỗi khi cập nhật danh mục:", error);
+      ErrorMessage("Có lỗi xảy ra khi cập nhật danh mục. Vui lòng thử lại sau.");
+    }
+  }
+
+  submitButton.addEventListener("click", onSubmitButtonClick);
 }
+
 
 async function deleteCategoryId(categoryId) {
   await deleteCategory(categoryId);
@@ -88,11 +113,17 @@ function createCategoryMarkup(category, quantity) {
       </div>
       <div class="product-cell status-cell">
         <span class="cell-label">Trạng thái:</span>
-        <span class="status ${category.status === "Active" ? "active" : "disabled"}">${category.status}</span>
+        <span class="status ${
+          category.status === "Active" ? "active" : "disabled"
+        }">${category.status}</span>
       </div>
       <div class="product-cell function">
-        <button class="change-btn-category" data-id-category="${category.id}" data-form="category">Chỉnh sửa</button>
-        <button class="delete-btn-category" data-id-category="${category.id}" data-form="category">Xóa</button>
+        <button class="change-btn-category" data-id-category="${
+          category.id
+        }" data-form="category">Chỉnh sửa</button>
+        <button class="delete-btn-category" data-id-category="${
+          category.id
+        }" data-form="category">Xóa</button>
       </div>
     </div>`;
 }

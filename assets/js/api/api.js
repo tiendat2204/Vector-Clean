@@ -12,9 +12,19 @@ function fetchCategories() {
 function fetchOrders() {
   return fetchData(`${baseUrl}/orders`);
 }
+function fetchUsers() {
+  return fetchData(`${baseUrl}/users`);
+}
+async function fetchProductsByPriceRange(categoryId, minPrice, maxPrice) {
+  const url = `${baseUrl}/categories/${categoryId}/products?minPrice=${minPrice}&maxPrice=${maxPrice}`;
+  const response = await fetchData(url);
+  return response.products;
+}
+
+
 
 function fetchProductsByCategory(categoryId) {
-  return fetchData(`${baseUrl}/products?categoryId=${categoryId}`);
+  return fetchData(`${baseUrl}/categories/${categoryId}/products`);
 }
 
 function getProductDetails(productId) {
@@ -42,8 +52,15 @@ async function getCategoryDetails(categoryId) {
 function updateCategory(categoryId, categoryData) {
   return putData(`${baseUrl}/categories/${categoryId}`, categoryData);
 }
+
 function deleteCategory(categoryId) {
   return deleteData(`${baseUrl}/categories/${categoryId}`);
+}
+function updateUser(userId, userData) {
+  return putData(`${baseUrl}/users/${userId}`, userData);
+}
+function deleteUser(categoryId) {
+  return deleteData(`${baseUrl}/users/${categoryId}`);
 }
 
 async function addOrder(orderData) {
@@ -59,6 +76,7 @@ function updateOrder(orderId, orderData) {
 function deleteOrder(orderId) {
   return deleteData(`${baseUrl}/orders/${orderId}`);
 }
+
 export {
   fetchProducts,
   fetchCategories,
@@ -74,5 +92,9 @@ export {
   fetchOrders,
   fetchOrderDetails,
   updateOrder,
-  deleteOrder
+  deleteOrder,
+  fetchUsers,
+  updateUser,
+  deleteUser,
+  fetchProductsByPriceRange,
 };

@@ -34,6 +34,7 @@ function getDataAdmin() {
     categoryId,
     status,
     image,
+    view: 0,
   };
 
   return productData;
@@ -91,6 +92,7 @@ function getOrderDataFrom() {
   const phoneNumber = document.getElementById("phone-number").value;
   const email = document.getElementById("email-out").value;
   const address = document.getElementById("address").value;
+  
 
   const cartItems = JSON.parse(localStorage.getItem("cart"));
   const products = cartItems.map((item) => ({
@@ -106,8 +108,16 @@ function getOrderDataFrom() {
   const highestOrderId = parseInt(localStorage.getItem("highestOrderId")) || 0;
   const newOrderId = highestOrderId + 1;
   localStorage.setItem("highestOrderId", newOrderId.toString());
-  const currentDate = new Date(); // Lấy ngày hiện tại
+  const currentDate = new Date(); 
   const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')}`; // Định dạng ngày thành 'YYYY-MM-DD'
+  let paymentMethod;
+  const paymentMethodRadios = document.getElementsByName("payment-method");
+  for (const radio of paymentMethodRadios) {
+    if (radio.checked) {
+      paymentMethod = radio.value;
+      break;
+    }
+  }
 
   const order = {
     id: newOrderId.toString(),
@@ -119,20 +129,29 @@ function getOrderDataFrom() {
     userId: userId.id,
     status: "Chờ xác nhận",
     createdAt: formattedDate,
+    paymentMethod: paymentMethod
   };
   return order;
 }
 function getDataAdminEditOrder() {
   const editedOrderData = {
-    // Lấy thông tin mới từ các trường trong form chỉnh sửa đơn hàng
     name: document.getElementById("customer-name-input").value,
     phoneNumber: document.getElementById("customer-phone-input").value,
     email: document.getElementById("customer-email-input").value,
     address: document.getElementById("customer-address-input").value,
     status: document.getElementById("order-status-select").value,
-    // Các trường khác tùy thuộc vào giao diện và cách bạn tổ chức dữ liệu
   };
   return editedOrderData;
+}
+
+function getDataForEditedUser() {
+  const editedStatus = document.getElementById("editStatusSelect").value; 
+
+  
+  const UserData = {
+   status: editedStatus
+  };
+  return UserData
 }
 
 export {
@@ -141,4 +160,5 @@ export {
   getDataAdminEditCategory,
   getOrderDataFrom,
   getDataAdminEditOrder,
+  getDataForEditedUser
 };

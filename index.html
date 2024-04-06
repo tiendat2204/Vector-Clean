@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="./assets/base.css">
     <link rel="stylesheet" href="./assets/grid.css">
     <link rel="stylesheet" href="./assets/main.css">
-    
+ 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <style>
-   
+
+
 </style>
 <body>
     <div class="app">
@@ -74,7 +76,7 @@
                 </div>
                 <div class="nav-search">
                     <input type="text" placeholder="Nhập từ cần tìm" class="nav-search-btn">
-                    <i class="nav-search-btn-icon fas fa-search"></i>
+                    <i class="nav-search-btn-icon fas fa-search search-btn" ></i>
                 </div>
                 <div class="nav-user" onclick="showOptionForm()">
                     <i class="fa-solid fa-user"></i>
@@ -217,7 +219,7 @@
                     <input type="checkbox" />
                     <label>Nhớ mật khẩu </label>
                   </div>
-                  <span class="span-title">Quên mật khẩu?</span>
+                  <span class="span-title" onclick="openFormForgot()">Quên mật khẩu?</span>
                 </div>
                 <button class="button-submit" id="login-form-btn">Đặng nhập</button>
                 <p class="goiy">
@@ -227,7 +229,7 @@
                 <p class="goiy line">hoặc với</p>
           
                 <div class="flex-row">
-                  <button class="btn-with google">
+                  <button class="btn-with google" id="loginGG">
                     <svg
                       version="1.1"
                       width="20"
@@ -392,6 +394,7 @@
                     type="password"
                     class="input-text"
                     placeholder="Nhập lại mật khẩu"
+                    id="cofirm-pass-change"
                   />
                   <svg
                     viewBox="0 0 576 512"
@@ -405,13 +408,49 @@
                 </div>
           
                 <div class="flex-row">
-                  <span class="span-title">Quên mật khẩu?</span>
+                  <span class="span-title" onclick="openFormForgot()">Quên mật khẩu?</span>
                 </div>
                 <button class="button-submit" type="button" id="register-btn">Đăng kí</button>
                 <p class="goiy">
                   Đã có tài khoản?
                   <span class="span-title" onclick="openForm('loginForm')">Đăng nhập</span>
                 </p>
+              </div>
+              <div class="form-forgot-pass" style="display: none" id="forgot-pass-form">
+                <button class="button-close" onclick="closeForm()" type="button">X</button>
+                <div class="flex-column">
+                  <label>Vui lòng nhập Email quên mật khẩu </label>
+                </div>
+                <div class="inputForm-text">
+                  <svg
+                    height="20"
+                    viewBox="0 0 32 32"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g id="Layer_3" data-name="Layer 3">
+                      <path
+                        d="m30.853 13.87a15 15 0 0 0 -29.729 4.082 15.1 15.1 0 0 0 12.876 12.918 15.6 15.6 0 0 0 2.016.13 14.85 14.85 0 0 0 7.715-2.145 1 1 0 1 0 -1.031-1.711 13.007 13.007 0 1 1 5.458-6.529 2.149 2.149 0 0 1 -4.158-.759v-10.856a1 1 0 0 0 -2 0v1.726a8 8 0 1 0 .2 10.325 4.135 4.135 0 0 0 7.83.274 15.2 15.2 0 0 0 .823-7.455zm-14.853 8.13a6 6 0 1 1 6-6 6.006 6.006 0 0 1 -6 6z"
+                      ></path>
+                    </g>
+                  </svg>
+                  <input
+                    type="text"
+                    class="input-text"
+                    placeholder="Nhập Email"
+                    id="email-reset-pass"
+                  />
+                </div>
+          
+               
+                
+          
+                <div class="flex-row">
+                 
+                </div>
+                <button class="button-submit" id="btn-send-mail" >Xác nhận</button>
+               
+        
               </div>
             <div class="container-new">
                 <a href="" class="container-letter">SẢN PHẨM MỚI</a>
@@ -454,7 +493,7 @@
 
                 </div>
             </div>
-            <div class="product-next">
+            <!-- <div class="product-next">
                 <div class="grid wide">
                     <div class="row">
                         <div class="col l-12 m-12 c-12">
@@ -467,11 +506,96 @@
                         </div>
                     </div>
                 </div>
+            </div> -->
+            <div class="conteiner-hot">
+              <a href="" class="container-letter">GIÀY PHỔ BIẾN</a>
+          </div>
+            <div class="wrapper">
+              <div class="items">
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/product-2.jpg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/18899181.jpg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/306090-01-425.jpg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/giay-vans-knu-skool-black-true-white-vn0009qc6bt-1.webp')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/giay-the-thao-nike-air-max-270-dd8559-001-mau-den-11032021095829.png')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img//giay-the-thao-puma-slipstream-xtreme-39243401-mau-trang-6582745839b2f-20122023115800.jpg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/giay-the-thao-puma-smash-v2-365324-01-size-43-5e4b6029d1215-18022020105521.jpg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/giay-the-thao-converse-chuck-taylor-all-star-mau-den-14032021172914.webp')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/product-4.jpeg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/product-10.jpg')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/product-7.webp')"></div>
+                <div class="item-img" tabindex="0" style="background-image: url('./assets/img/product-9.jpg')"></div>
+              </div>
             </div>
+           
+            <div class="conteiner-hot">
+              <a href="" class="container-letter">SẢN PHẨM HOT</a>
+          </div>
+          <div class="container-product-hot" >
+            <div class="grid">
+                <div class="col l-12 m-12 c-12"  >
+                    <div class="row" id="productContainerHot" >
+                        <!-- <div class="col l-3 m-6 c-6">
+                            <div class="container-product-app">
+                                <div class="container-product-column">
+                                    <a href="" class="product-item"><img class="product-item-img"
+                                            src="./assets/img/product-1.jpeg" alt=""></a>
+                                </div>
+                                <div class="product-description">
+                                    <a href="" class="product-description-list">AIR MAX 90 HOME & AWAY BLUE</a>
+                                </div>
+
+                                <div class="product-evaluate">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+
+                                <div class="product-price">
+                                    <span class="product-price-item">3,900,000 đ</span>
+                                </div>
+                                <div class="product-new-list">
+                                    New
+                                </div>
+                            </div>
+                        </div> -->
+                       
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+     
         
 
     </div>
-
+    <div class="conteiner-hot">
+      <a href="" class="container-letter">KHUYẾN MÃI</a>
+  </div>
+  <div class="banner_section ">
+    <div class="container-fluid">
+        <div class="row-sale ">
+          
+            <div class="item-sale">
+                <div class="banner_area">
+                    <div class="banner_thumb">
+                      <a href="shop.html"><img src="./assets/img/18899181.jpg" alt="#"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item-sale">
+                <div class="banner_area bottom">
+                    <div class="banner_thumb">
+                      <a href="shop.html"><img src="./assets/img/black_friday_facebook_banner_11.jpg" alt="#"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
     <section>
         <div class="section-app">
             <div class="grid">
@@ -557,18 +681,10 @@
     </footer>
    
     </div>
-    <script>
-   function redirectToProductDetail(productId) {
- 
- window.location.href = `productDetail.html?productId=${productId}`;
-}
 
-
-
-    </script>
-<script src="./assets/js/script.js"></script>
+<script  src="./assets/js/script.js"></script>
     <script type="module" src="./assets/js/home.js"></script>
-
+<script type="module" src="./assets/js/resetPassword.js"></script>
    
 </body>
 

@@ -9,6 +9,9 @@ function updateCartNumber() {
 
 function logout() {
   localStorage.removeItem("user");
+  localStorage.removeItem("userData");
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
   updateHeader();
 }
 
@@ -18,10 +21,15 @@ function updateHeader() {
 
   if (user) {
     optionUserBtn.innerHTML = `
-      <span class="username">Xin chào, ${user.username}</span>
-      <span class="logout-btn">Đăng Xuất</span>
+    <span class="username">Xin chào, ${user.username}</span>
+    <span class="info-btn">Thông tin</span>
+    <span class="logout-btn">Đăng Xuất</span>
     `;
 
+    const in4User = optionUserBtn.querySelector(".info-btn");
+    in4User.addEventListener("click", () => {
+      window.location.href = "user.html";
+    });
     const logoutButton = optionUserBtn.querySelector(".logout-btn");
     logoutButton.addEventListener("click", logout);
   } else {

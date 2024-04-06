@@ -1,6 +1,5 @@
 import { fetchProducts } from "./api/api.js";
 import { getProductHTML } from "./markups/productMarkup.js";
-import { displayPagination } from "./markups/paginationMarkup.js";
 import { clickCart, addProductToCart } from "./utils/cartUtils.js";
 import { updateCartNumber, updateHeader } from "./utils/updateHeader.js";
 import { registerUser, loginUser } from "./user.js";
@@ -8,9 +7,11 @@ const productsPerPage = 8;
 let currentPage = 1;
 
 async function mainHomeLogic() {
+  // localStorage.clear();
   updateCartNumber();
-  updateHeader();
 
+  updateHeader();
+  handleSearchButtonClick();
   try {
     const products = await fetchProducts();
 
@@ -18,43 +19,54 @@ async function mainHomeLogic() {
       clearProductDisplay();
       currentPage = clickedPage;
       displayProducts(products, currentPage);
-      displayPagination(
-        products.length,
-        currentPage,
-        productsPerPage,
-        onPageClick
-      );
     };
 
     displayProducts(products, currentPage);
     document.addEventListener("click", clickCart);
-    displayPagination(
-      products.length,
-      currentPage,
-      productsPerPage,
-      onPageClick
-    );
     registerUser();
     loginUser();
   } catch (error) {
     console.error("Error in mainHomeLogic:", error);
   }
 }
+function handleSearchButtonClick() {
+  const searchInput = document.querySelector(".nav-search-btn").value.trim();
+  if (searchInput !== "") {
+    window.location.href = `category.html?search=${searchInput}`;
+  } else {
+    console.log("Vui lòng nhập từ khóa tìm kiếm.");
+  }
+}
 
+document.addEventListener("DOMContentLoaded", () => {
+  const searchBtn = document.querySelector(".search-btn");
+  searchBtn.addEventListener("click", handleSearchButtonClick);
+});
 function displayProducts(products, page) {
   const startIndex = (page - 1) * productsPerPage;
   const endIndex = page * productsPerPage;
   const productsToDisplay = products.slice(startIndex, endIndex);
+
   const productContainer = document.getElementById("productContainer");
+  const productContainerHot = document.getElementById("productContainerHot");
 
   productContainer.innerHTML = "";
+  productContainerHot.innerHTML = "";
+
+  const productsSortedByView = [...products].sort((a, b) => b.view - a.view);
+  const hotProductsToDisplay = productsSortedByView.slice(startIndex, endIndex);
+
+  hotProductsToDisplay.forEach((product) => {
+    const productHTML = getProductHTML(product, products);
+    productContainerHot.insertAdjacentHTML("beforeend", productHTML);
+  });
 
   productsToDisplay.forEach((product) => {
     const productHTML = getProductHTML(product);
-    productContainer.innerHTML += productHTML;
+    productContainer.insertAdjacentHTML("beforeend", productHTML);
   });
 
-  productContainer.addEventListener("click", (event) => {
+  const handleClick = (event) => {
     const btn = event.target.closest(".CartBtn");
     if (btn) {
       const productId = btn.dataset.productId;
@@ -73,12 +85,17 @@ function displayProducts(products, page) {
         console.error("Product not found with ID:", productId);
       }
     }
-  });
+  };
+
+  productContainer.addEventListener("click", handleClick);
+  productContainerHot.addEventListener("click", handleClick);
 }
 
 function clearProductDisplay() {
   const productContainer = document.getElementById("productContainer");
+  const productContainerHot = document.getElementById("productContainerHot");
   productContainer.innerHTML = "";
+  productContainerHot.innerHTML = "";
 }
 
 document.addEventListener("DOMContentLoaded", mainHomeLogic);

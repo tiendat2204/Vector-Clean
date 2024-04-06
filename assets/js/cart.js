@@ -7,11 +7,14 @@ import { getCartItemHTML } from "./markups/cartMarkups.js";
 import { fetchProducts } from "./api/api.js";
 import { formatPrice } from "./utils/formatPrice.js";
 import { updateCartNumber,updateHeader } from "./utils/updateHeader.js";
+import { registerUser, loginUser } from "./user.js";
 
 async function mainCartLogic() {
   // localStorage.clear();
   updateHeader();
   updateCartTotalInDOM();
+  loginUser();
+  registerUser();
   try {
     const allProducts = await fetchProducts();
     const cartItems = getCartFromLocalStorage();
@@ -80,6 +83,7 @@ function attachQuantityEventListeners(
     const minusBtn = document.querySelector(
       `.minus-btn[data-index="${index}"]`
     );
+    
     const plusBtn = document.querySelector(`.plus-btn[data-index="${index}"]`);
     const quantityInput = document.querySelector(
       `#quantityValue[data-index="${index}"]`

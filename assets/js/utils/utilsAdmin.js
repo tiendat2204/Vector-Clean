@@ -1,6 +1,9 @@
 function SuccessMessage(successMessage) {
+  hideSuccessNotification();
+
   const successNotification = createSuccessNotification(successMessage);
   document.body.insertAdjacentHTML("beforeend", successNotification);
+
   setTimeout(() => {
     hideSuccessNotification();
   }, 4000);
@@ -12,15 +15,6 @@ function hideSuccessNotification() {
   );
   if (notificationsContainer) {
     notificationsContainer.remove();
-  }
-}
-function updateSidebar() {
-  const user = JSON.parse(localStorage.getItem("user"));
-  const accountInfoName = document.querySelector(".account-info-name");
-  if (user) {
-    accountInfoName.textContent = user.username;
-  } else {
-    accountInfoName.textContent = "Đăng nhập";
   }
 }
 
@@ -44,7 +38,15 @@ function createSuccessNotification(message) {
     </div>
   `;
 }
-
+function updateSidebar() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const accountInfoName = document.querySelector(".account-info-name");
+  if (user) {
+    accountInfoName.textContent = user.username;
+  } else {
+    accountInfoName.textContent = "Đăng nhập";
+  }
+}
 function closeModal() {
   const modal = document.querySelector(".modal-product");
   modal.style.display = "none";
@@ -126,13 +128,26 @@ function openEditOrderModal() {
 function fillEditOrderModal(orderDetails) {
   openEditOrderModal();
   document.getElementById("customer-name-input").value = orderDetails.name;
-  document.getElementById("customer-phone-input").value = orderDetails.phoneNumber;
+  document.getElementById("customer-phone-input").value =
+    orderDetails.phoneNumber;
   document.getElementById("customer-email-input").value = orderDetails.email;
-  document.getElementById("customer-address-input").value = orderDetails.address;
+  document.getElementById("customer-address-input").value =
+    orderDetails.address;
   document.getElementById("order-status-select").value = orderDetails.status;
 }
 
-
+function openEditUserModal() {
+  const modal = document.querySelector("#editUserForm");
+  modal.style.display = "flex";
+}
+function closeEditUserModal() {
+  const modal = document.querySelector("#editUserForm");
+  modal.style.display = "none";
+}
+function fillEditUserForm(userDetail) {
+  openEditUserModal();
+  document.getElementById("editStatusSelect").value = userDetail.status;
+}
 export {
   SuccessMessage,
   closeModal,
@@ -144,5 +159,7 @@ export {
   closeEditCategoryModal,
   updateSidebar,
   closeEditOrderModal,
-  fillEditOrderModal
+  fillEditOrderModal,
+  fillEditUserForm,
+  closeEditUserModal,
 };

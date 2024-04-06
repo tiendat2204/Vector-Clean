@@ -5,6 +5,7 @@ import {
 } from "../markups/categoryMarkupsAdminForm.js";
 import { displayCategories } from "../markups/categoryMarkupsAdmin.js";
 import { displayProductsAdmin } from "../markups/productMarkupsAdmin.js";
+import { displayUsers } from "../markups/userAdminMarkups.js";
 import { displayOrdersAdmin } from "../markups/orderAdminMarkups.js";
 import { addProduct } from "./addProduct.js";
 import {
@@ -57,6 +58,8 @@ function loadPage(url) {
         renderDashboard();
       } else if (url.includes("orders-content.html")) {
         displayOrdersAdmin();
+      } else if (url.includes("user-content.html")) {
+        displayUsers();
       } else if (url.includes("category-content.html")) {
         displayCategories();
         const addCategoryForm = document.getElementById("addCategoryForm");

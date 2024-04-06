@@ -2,7 +2,7 @@
 
 <div class="app-content">
     <div class="app-content-header">
-      <h1 class="app-content-headerText">Products</h1>
+      <h1 class="app-content-headerText">Orders</h1>
       <button class="mode-switch" title="Switch Theme">
         <svg
           class="moon"
@@ -155,7 +155,7 @@
           </table>
           <div id="edit-order-modal" class="modal-order">
             <div class="modal-content">
-              <span class="close-btn-orders">&times;</span>
+              <span class="close-btn-orders" onclick="closeEditOrderyModal()">&times;</span>
                 <div class="form-group">
                     <label for="customer-name-input" class="form-label">Customer Name:</label>
                     <input type="text" id="customer-name-input" class="form-input">

@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kingshoes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="./assets/base.css">
+    <link rel="stylesheet" href="./assets/grid.css">
+    <link rel="stylesheet" href="./assets/main.css">
+    <link rel="stylesheet" href="./assets/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<style>
+   #app-pay {
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #000    ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-info {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.payment-info .form-label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333333;
+  font-weight: bold;
+}
+
+.payment-info .qr-code {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.payment-info span {
+  display: block;
+  color: #666666;
+  margin-bottom: 5px;
+}
+
+.payment-info p {
+  display: inline;
+  font-weight: bold;
+  color: #333333;
+}
+
+
+
+/* Optional: Adding a little responsive touch */
+@media (max-width: 768px) {
+  #app {
+    padding: 10px;
+  }
+
+  .button-cta {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+  }
+}
+.payment-user {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.payment-user span {
+  display: block;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.payment-user p {
+  display: inline-block;
+  font-weight: 600;
+  margin: 0;
+  color: #0056b3;
+}
+
+#countdown {
+  font-family: 'Consolas', 'Courier New', monospace;
+  background-color: #333;
+  color: #ffdd57;
+  padding: 10px 20px;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 1.5em;
+  margin-top: 10px;
+  position: relative;
+}
+
+#countdown:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 4px;
+  animation: pulse-bg 2s infinite;
+}
+
+/* Blinking effect for the colon */
+#countdown .colon {
+  animation: blink 1s step-start 0s infinite;
+}
+
+/* Keyframes for the blinking colon */
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Keyframes for background pulse */
+@keyframes pulse-bg {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  #countdown {
+    font-size: 1.2em;
+    padding: 8px 16px;
+  }
+}
+</style>
+<body>
+  
+
+        <header class="header">
+            <div class="header-heading">
+                <div class="header-king">
+                    <a href="" class="header-king-queen">👑 KING AND QUEEN</a>
+                    <a href="" class="header-check">
+                        <i class="fas fa-users"></i>
+                        CHECK USER</a>
+                    <i class="header-hotline-icon fas fa-phone"></i>
+                    <a class="header-hotline-fix" href="">
+                        Liên hệ:</a>
+                    <a href="" class="header-hotline">0354411541</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="nav">
+            <div class="nav-pc">
+                <div class="navigation">
+                    <a href="index.html" class="navigation-logo"><img class="navigation-logo-img"
+                            src="./assets/img//wepik-sport-logo-with-sneakers-202401031553184ffG.png"
+                            alt=""></a>
+                </div>
+                <div class="nav-category">
+                    <ul class="category-pc">
+                        <li class="category-pc-item"><a href="" class="category-pc-list">GIỚI THIỆU</a></li>
+                   
+                      
+                        <li class="category-pc-item category-pc-show-brand"><a href="" class="category-pc-list">
+                                THƯƠNG HIỆU KHÁC
+                            </a>
+                            <ul class="category-brand-menu">
+                                <li class="category-brand-menu-item"><a href="" class="category-brand-menu-list">SNEAKER
+                                        AUTHENTIC</a></li>
+                                <li class="category-brand-menu-item"><a href="" class="category-brand-menu-list">Giày
+                                        thể thao chạy bộ -tập gym</a></li>
+                                <li class="category-brand-menu-item"><a href="" class="category-brand-menu-list">Giày
+                                        tennis nike chính hãng</a></li>
+                                <li class="category-brand-menu-item"><a href="" class="category-brand-menu-list">Dép
+                                        Authentic</a></li>
+                                <li class="category-brand-menu-item"><a href="" class="category-brand-menu-list">Crep
+                                        Protect vệ sinh giày Sneaker</a></li>
+                                <li class="category-brand-menu-item"><a href="" class="category-brand-menu-list">Box hộp
+                                        đựng giày Sneaker</a></li>
+                            </ul>
+                        </li>
+                        <li class="category-pc-item"><a href="category.html" class="category-pc-list">SẢN PHẨM</a></li>
+                        <li class="category-pc-item"><a href="" class="category-pc-list">DÂY GIÀY</a></li>
+                        <li class="category-pc-item"><a href="" class="category-pc-list">SPA GIÀY</a></li>
+                        <li class="category-pc-item"><a href="" class="category-pc-list">LIÊN HỆ</a></li>
+                    </ul>
+                </div>
+                <div class="nav-search">
+                    <input type="text" placeholder="Nhập từ cần tìm" class="nav-search-btn">
+                    <i class="nav-search-btn-icon fas fa-search"></i>
+                </div>
+                <div class="nav-user" onclick="showOptionForm()">
+                    <i class="fa-solid fa-user"></i>
+                   
+                  </div>
+               
+                  <div class="option-user">
+                    <div class="option-user-btn">
+                    <a href="#"> <span class="login-btn">Đăng Nhập</span></a>
+                      <a href="#">  <span class="register-btn">Đăng Kí</span></a>
+                    </div>
+                   
+                  </div>
+                  
+                <div class="nav-cart">
+                    <a href="cart.html" id="btn-cart">
+                    <i class="nav-cart-icon fas fa-shopping-cart"></i>
+                    <span class="nav-cart-number">0</span>
+                </a>
+                </div>
+                
+
+                <label for="nav-mobile-input" class="nav-bars-btn">
+                    <i class="fas fa-bars"></i>
+                </label>
+                <input hidden type="checkbox" name="" class="nav-input" id="nav-mobile-input">
+                <label for="nav-mobile-input" class="nav-overlay"></label>
+                <div class="nav-mobile">
+                    <label for="nav-mobile-input" class="nav-mobile-close">
+                        <i class="fas fa-times"></i>
+                    </label>
+                    <input class="nav-btn-search-fix" type="text" placeholder="Nhập từ cần tìm">
+                    <i class="nav-btn-search-fix-icon fas fa-search"></i>
+                    <ul class="nav-mobile-item">
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Giới thiệu</a></li>
+                        <li class="nav-mobile-list nav-mobile-list-show-nike"><a href="" class="nav-mobile-link">Nike
+                                <i class="nav-mobile-icon fas fa-chevron-down"></i>
+                            </a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Adidas
+                                <i class="nav-mobile-icon fas fa-chevron-down"></i>
+                            </a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Jordan
+                                <i class="nav-mobile-icon fas fa-chevron-down"></i>
+                            </a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Yeezy
+                                <i class="nav-mobile-icon fas fa-chevron-down"></i>
+                            </a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Other Brands
+                                <i class="nav-mobile-icon fas fa-chevron-down"></i>
+                            </a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Sale</a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Dây Giày</a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Dây Giày</a></li>
+                        <li class="nav-mobile-list"><a href="" class="nav-mobile-link">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="app-pay">
+            <div class="payment-info">
+                <label for="qr-code" class="form-label">Ảnh QR Chuyển Khoản:</label>
+                <img src="./assets/img/MB-113366668888-compact.png" alt="QR Code" class="qr-code">
+            </div>
+            <div class="payment-user">
+                <span>Nội Dung Chuyển Khoản: <p id="paid-nd"></p></span>
+                <span>Số tiền: <p id="paid-amout"></p></span>
+              
+                <div id="countdown">Thanh toán trong: 5:00</div> <!-- Phần hiển thị thời gian thanh toán -->
+            </div>
+            <button class='button-cta' title='Xác Nhận Đơn Hàng'><span>Đặt Hàng</span></button>
+        </div>
+        
+
+   
+
+        <section>
+            <div class="section-app">
+                <div class="grid">
+                    <div class="col l-12 m-12 c-12">
+                        <div class="section-app-container">
+                            <div class="col l-3 m-12 c-12">
+                                <div class="section-login">
+    
+                                    <h3 class="section-take">
+                                        <i class="far fa-envelope"></i>
+                                        ĐĂNG KÝ NHẬN CODE
+                                    </h3>
+                                </div>
+                            </div>
+    
+                            <div class="col l-5 m-12 c-12">
+                                <div class="section-mail">
+                                    <input type="email" placeholder="Địa chỉ email của bạn" class="section-mail-btn">
+                                    <input type="submit" value="Đăng Ký" class="section-create-account">
+                                </div>
+                            </div>
+    
+                            <div class="col l-4 m-12 c-12">
+                                <div class="section-voucher">
+                                    <p class="section-now">...Nhận Ngay
+                                    <h3 class="section-voucher-us">VOUCHER 100k</h3>
+                                    từ chúng tôi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    
+        <footer class="footer">
+            <div class="footer-app">
+                <div class="grid">
+                    <div class="col l-12 m-12 c-12">
+                        <div class="row">
+    
+                            <div class="col l-4 m-4 c-12">
+                                <div class="footer-info">
+                                    <a href="" class="footer-logo"><img class="footer-logo-img"
+                                            src="./assets/img/wepik-sport-logo-with-sneakers-202401031553184ffG.png"
+                                            alt=""></a>
+                                 
+                                </div>
+                            </div>
+                            <div class="col l-4 m-4 c-12">
+                                <div class="footer-regime">
+                                    <div class="footer-support">
+                                        <h3 class="footer-client">HỖ TRỢ KHÁCH HÀNG</h3>
+                                        <p class="footer-client-item"><a href="" class="footer-client-list">Chăm sóc khách
+                                                hàng</a></p>
+                                        <p class="footer-client-item"><a href="" class="footer-client-list">Thanh toán</a>
+                                        </p>
+                                        <p class="footer-client-item"><a href="" class="footer-client-list">Hướng dẫn mua
+                                                hàng</a></p>
+                                    </div>
+                                    <div class="footer-policy">
+                                        <h3 class="footer-insurance">CHÍNH SÁCH</h3>
+                                        <p class="footer-insurance-item"><a href="" class="footer-insurance-list">Chế độ bảo
+                                                hành</a></p>
+                                        <p class="footer-insurance-item"><a href="" class="footer-insurance-list">Chính sách
+                                                đổi hàng</a></p>
+                                        <p class="footer-insurance-item"><a href="" class="footer-insurance-list">Bảo mật
+                                                thông tin</a></p>
+                                        <p class="footer-insurance-item"><a href="" class="footer-insurance-list">Chính sách
+                                                giao nhận</a></p>
+                                    </div>
+    
+                                </div>
+                               
+                            </div>
+                      
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </footer>
+       
+        </div>
+        <script>
+       function redirectToProductDetail(productId) {
+     
+     window.location.href = `productDetail.html?productId=${productId}`;
+    }
+    
+            function showOptionForm() {
+                var optionUser = document.querySelector('.option-user');
+                optionUser.classList.toggle('active');
+            }
+    
+            // JavaScript
+
+
+        </script>
+        <script src="./assets/js/script.js"></script>
+        <script type="module" src="./assets/js/paymentNH.js"></script>
+    
+       
+    </body>
+    
+    </html>

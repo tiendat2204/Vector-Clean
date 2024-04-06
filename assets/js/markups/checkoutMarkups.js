@@ -5,10 +5,8 @@ function displayCartItemsCheckout() {
   const orderList = document.querySelector(".order-list");
   const cartTotal = document.getElementById("cartTotal");
 
-  // Lấy dữ liệu từ local storage
   const cartItems = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Hiển thị thông tin sản phẩm
   cartItems.forEach((item) => {
     const listItem = document.createElement("li");
     listItem.classList.add("order-item");
@@ -16,16 +14,24 @@ function displayCartItemsCheckout() {
             <img src='./assets/img/${item.image}' alt='${item.name}'>
             <div class='item-details'>
                 <div class="product-price-out">
-                    <a href="javascript:void(0);" class="product-name-item">${item.name}</a>
+                    <a href="javascript:void(0);" class="product-name-item">${
+                      item.name
+                    }</a>
                 </div>
                 <div class="product-price-out">
-                    <span class="product-price-item-out">${formatPrice(item.price)}</span>
+                    <span class="product-price-item-out">${formatPrice(
+                      item.price
+                    )}</span>
                 </div>
                 <div class="product-size">
-                    <span class="product-size-item-out">Size: ${item.size}</span>
+                    <span class="product-size-item-out">Size: ${
+                      item.size
+                    }</span>
                 </div>
                 <div class="product-quantity-out">
-                    <span class="product-quantity-item">Số Lượng: ${item.quantity}</span>
+                    <span class="product-quantity-item">Số Lượng: ${
+                      item.quantity
+                    }</span>
                 </div>
             </div>
         `;
@@ -38,4 +44,19 @@ function displayCartItemsCheckout() {
   );
   cartTotal.querySelector(".value").textContent = `${formatPrice(totalPrice)}`;
 }
-export { displayCartItemsCheckout };
+function displayUserPay() {
+  const userData = JSON.parse(localStorage.getItem("user"));
+
+  if (userData) {
+    document.getElementById("name").value = userData.username || "";
+    document.getElementById("phone-number").value = userData.phoneNumber || "";
+    document.getElementById("email-out").value = userData.email || "";
+    document.getElementById("address").value = userData.address || "";
+  } else {
+    document.getElementById("name").value = "";
+    document.getElementById("phone-number").value = "";
+    document.getElementById("email-out").value = "";
+    document.getElementById("address").value = "";
+  }
+}
+export { displayCartItemsCheckout, displayUserPay };

@@ -100,26 +100,33 @@ function attachButtonEvents() {
     }
   });
 }
-
 async function editOrder(orderId) {
   const orderToEdit = await getOrderDetails(orderId);
   fillEditOrderModal(orderToEdit);
 
   const submitButton = document.querySelector("#save-changes-btn-orders");
-  submitButton.addEventListener("click", async (event) => {
+
+  submitButton.removeEventListener("click", handleSaveChanges);
+  submitButton.addEventListener("click", handleSaveChanges);
+
+  async function handleSaveChanges(event) {
     event.preventDefault();
 
+    submitButton.removeEventListener("click", handleSaveChanges);
+
     const editedOrderData = getDataAdminEditOrder();
+    delete orderToEdit._id;
     const updatedOrderData = {
       ...orderToEdit,
       ...editedOrderData,
     };
+    console.log(updatedOrderData);
     await updateOrder(orderId, updatedOrderData);
 
     displayOrdersAdmin();
     closeEditOrderModal();
     SuccessMessage("Chỉnh sửa đơn hàng thành công!");
-  });
+  }
 }
 
 async function getOrderDetails(orderId) {

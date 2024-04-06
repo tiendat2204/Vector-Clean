@@ -1,7 +1,8 @@
 // user.js
 import { SuccessMessage } from "./utils/utilsAdmin.js";
 import { fetchData, postData } from "./api/getData.js";
-
+import { jwtDecode } from "../../node_modules/jwt-decode/build/esm/index.js";
+import { updateHeader } from "./utils/updateHeader.js";
 function closeForm(formId) {
   document.getElementById(formId).style.display = "none";
 }
@@ -39,16 +40,20 @@ async function registerUser() {
         const response = await fetch("http://localhost:3000/users");
         const users = await response.json();
 
-        const highestId = users.reduce((maxId, users) => Math.max(maxId, parseInt(users.id) || 0), 0);
+        const highestId = users.reduce(
+          (maxId, user) => Math.max(maxId, parseInt(user.id) || 0),
+          0
+        );
 
         const userID = (highestId + 1).toString();
-        
-        await postData("http://localhost:3000/users", {
+
+        await postData("http://localhost:3000/users/register", {
           id: userID,
           username: username,
           email: email,
           password: password,
           role: role,
+          status: "Active",
         });
 
         closeForm("registerForm");
@@ -63,40 +68,134 @@ async function registerUser() {
     });
 }
 
-function loginUser() {
+async function loginUser() {
+  const ClientID =
+    "180086349531-p8s9421cv35ki1m24pbu8pohm9d0po2p.apps.googleusercontent.com";
+  const LINK_GET_TOKEN = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.email%20https://www.googleapis.com/auth/userinfo.profile&response_type=token&redirect_uri=http://127.0.0.1:5500/index.html&client_id=${ClientID}`;
+  const signBtn = document.getElementById("loginGG");
+  signBtn.addEventListener("click", () => {
+    window.location.href = LINK_GET_TOKEN;
+  });
+
+  const isGoogleLogin = window.location.href.includes('access_token');
+  if (isGoogleLogin) {
+    const accessToken = getToken();
+    if (accessToken) {
+      await getUserGG(accessToken);
+    }
+  }
+
   document
     .getElementById("login-form-btn")
-    .addEventListener("click", function (event) {
+    .addEventListener("click", async function (event) {
       event.preventDefault();
 
       const email = document.getElementById("emailLogin").value;
       const password = document.getElementById("passLogin").value;
 
-      fetchData(
-        `http://localhost:3000/users?email=${email}&password=${password}`
-      )
-        .then((data) => {
-          console.log(data[0].role);
-          if (data && data[0].role === "admin") {
-            localStorage.setItem("user", JSON.stringify(data[0]));
-            window.location.href = "../admin.html";
-          } else {
-            localStorage.setItem("user", JSON.stringify(data[0]));
-            SuccessMessage("Đăng nhập thành công!");
-            closeForm("loginForm");
-            setTimeout(() => {
-              window.location.href = "../index.html";
-            }, 3000);
-          }
-        })
-
-        .catch((error) => {
-          console.error("Lỗi khi đăng nhập:", error);
-          SuccessMessage(
-            "Đăng nhập không thành công, kiểm tra lại thông tin !!"
-          );
+      try {
+        const response = await fetch("http://localhost:3000/users/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
         });
+
+        if (!response.ok) {
+          throw new Error("Có lỗi xảy ra khi đăng nhập.");
+        }
+
+        const data = await response.json();
+
+        console.log(data);
+        localStorage.setItem("accessToken", data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
+        const decodedToken = jwtDecode(data.accessToken);
+        localStorage.setItem("user", JSON.stringify(decodedToken));
+        if (decodedToken.status !== "Active") {
+          SuccessMessage("Tài khoản đã bị khóa");
+          return;
+        }
+
+        if (decodedToken.role == "admin") {
+          window.location.href = "../admin.html";
+        } else {
+          SuccessMessage("Đăng nhập thành công!");
+          closeForm("loginForm");
+          setTimeout(() => {
+            window.location.href = "../index.html";
+          }, 3000);
+        }
+      } catch (error) {
+        if (error.message === "Tài khoản đã bị khóa.") {
+          SuccessMessage(
+            "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ với quản trị viên để biết thêm thông tin."
+          );
+        } else {
+          SuccessMessage("Đăng nhập không thành công: " + error.message);
+        }
+      }
     });
+}
+
+
+function getToken() {
+  const savedAccessToken = window.localStorage.getItem("accessToken");
+  if (savedAccessToken) {
+    return savedAccessToken;
+  } else {
+    const url = new URLSearchParams(window.location.hash.substring(1));
+    const token = url.get("access_token");
+    if (token) {
+      window.localStorage.setItem("accessToken", token);
+      return token;
+    } else {
+      return null;
+    }
+  }
+}
+
+async function getUserGG(accessToken) {
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`
+    );
+
+    const dataUser = await response.json();
+    const responseUser = await fetch("http://localhost:3000/users");
+    const users = await responseUser.json();
+    const highestId = users.reduce(
+      (maxId, user) => Math.max(maxId, parseInt(user.id) || 0),
+      0
+    );
+    const userID = (highestId + 1).toString();
+    const userWithId = {
+      id: userID,
+      username: dataUser.name,
+      email: dataUser.email,
+      picture: dataUser.picture,
+      role: "user",
+      status: "Active",
+    };
+
+    const existingUser = users.find((user) => user.email === dataUser.email);
+
+    if (existingUser) {
+      localStorage.setItem("user", JSON.stringify(existingUser));
+      updateHeader();
+    } else {
+      localStorage.setItem("user", JSON.stringify(userWithId));
+      await postData("http://localhost:3000/users/register/gg", userWithId);
+      updateHeader();
+      SuccessMessage("Đăng nhập thành công!");
+      setTimeout(() => {
+        window.location.href = "../index.html";
+      }, 100);
+    }
+  } catch (error) {
+    console.error("Lỗi khi lấy thông tin người dùng từ Google:", error);
+  }
 }
 
 function openForm(formId) {
@@ -111,4 +210,6 @@ function openForm(formId) {
   }
 }
 
-export { registerUser, loginUser };
+
+
+export { registerUser, loginUser  };

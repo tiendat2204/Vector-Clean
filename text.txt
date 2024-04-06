@@ -1,0 +1,2 @@
+./auth/userinfo.email
+./auth/userinfo.profile

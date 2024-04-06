@@ -106,13 +106,9 @@
             </ul>
           </div>
           <div class="nav-search">
-            <input
-              type="text"
-              placeholder="Nhập từ cần tìm"
-              class="nav-search-btn"
-            />
-            <i class="nav-search-btn-icon fas fa-search"></i>
-          </div>
+            <input type="text" placeholder="Nhập từ cần tìm" class="nav-search-btn">
+            <i class="nav-search-btn-icon fas fa-search search-btn" ></i>
+        </div>
           <div class="nav-user" onclick="showOptionForm()">
             <i class="fa-solid fa-user"></i>
           </div>
@@ -435,15 +431,18 @@
         </p>
       </div>
     <div class="container-product">
-            <div class="find-price">
-                <label for="price-filter">Lọc theo Giá:</label>
-                <select id="price-filter">
-                    <option value="all">Tất cả</option>
-                    <option value="1-2">1,000,000 đến 2,000,000 đ</option>
-                    <option value="3-4">3,000,000 đến 4,000,000 đ</option>
-                    <option value="5-7">5,000,000 đến 7,000,000 đ</option>
-                </select>
-            </div>
+      <div class="find-price">
+        <label for="price-filter">Lọc theo Giá:</label>
+        <select id="price-filter">
+            <option value="all">Tất cả</option>
+            <option value="1-2">1,500,000 đến 2,000,000 đ</option>
+            <option value="3-4">2,000,000 đến 2,500,000 đ</option>
+            <option value="5-7">2,500,000 đến 3,000,000 đ</option>
+            <option value="6-8">3,000,000 đến 3,500,000 đ</option>
+
+        </select>
+    </div>
+    
         
         <div class="grid">
             
@@ -490,25 +489,9 @@
 
         </div>
     </div>
-    <div class="product-next">
-        <div class="grid wide">
-            <div class="row">
-                <div class="col l-12 m-12 c-12">
-                    <ul class="product-to-page" id="pagination">
-                        <li class="product-to-page-item"><a href="" class="product-to-page-number">1</a></li>
-                        <li class="product-to-page-item"><a href="" class="product-to-page-number">2</a></li>
-                        <li class="product-to-page-item"><a href="" class="product-to-page-number">3</a></li>
-                        <li class="product-to-page-item"><a href="" class="product-to-page-number">4</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+  
     <script>
-          function redirectToProductDetail(productId) {
- 
- window.location.href = `productDetail.html?productId=${productId}`;
-}
+     
 function showOptionForm() {
         var optionUser = document.querySelector(".option-user");
         optionUser.classList.toggle("active");

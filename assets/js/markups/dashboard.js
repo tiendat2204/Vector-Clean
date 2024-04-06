@@ -42,7 +42,7 @@ async function renderDashboard() {
       (order) => order.revenue
     );
 
-    initializeChart("myChart", revenueCounts, chartLabels, 'bar'); 
+    initializeChart("myChart", revenueCounts, chartLabels, "bar");
   } catch (error) {
     console.error("Error fetching dashboard data:", error);
   }

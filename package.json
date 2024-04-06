@@ -1,0 +1,21 @@
+{
+  "name": "asm-esm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^4.4.2",
+    "jwt-decode": "^4.0.0",
+    "live-server": "^1.2.2",
+    "moment": "^2.30.1",
+    "tsc-watch": "^6.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.28"
+  }
+}

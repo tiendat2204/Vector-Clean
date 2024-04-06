@@ -2,8 +2,8 @@
 import { updateCartNumber } from "./updateHeader.js";
 
 function addToCart(productToAdd, products) {
-  const existingProductIndex = products.findIndex((item) =>
-    item.id === productToAdd.id && item.size === productToAdd.size
+  const existingProductIndex = products.findIndex(
+    (item) => item.id === productToAdd.id && item.size === productToAdd.size
   );
 
   if (existingProductIndex !== -1) {
@@ -12,7 +12,7 @@ function addToCart(productToAdd, products) {
     products.push(productToAdd);
   }
 
-  localStorage.setItem('cart', JSON.stringify(products));
+  localStorage.setItem("cart", JSON.stringify(products));
   updateCartNumber();
   return products;
 }
