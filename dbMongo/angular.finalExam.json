@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "666d0c178df5ef38407c6c3c"
+  },
+  "firstName": "Vip Kit Clean",
+  "lastName": "tôi",
+  "email": "Vector Sneaker ",
+  "address": "66437592058400a1cbda5d03"
+},
+{
+  "_id": {
+    "$oid": "666d2176dfc32b33983a50b6"
+  },
+  "firstName": "Vip Kit Clean",
+  "lastName": "tôi",
+  "email": "Vector Sneaker ",
+  "address": "cxzc"
+},
+{
+  "_id": {
+    "$oid": "666d2176dfc32b33983a50b7"
+  },
+  "firstName": "Vip Kit Clean",
+  "lastName": "tôi",
+  "email": "Vector Sneaker ",
+  "address": "cxzcxz"
+},
+{
+  "_id": {
+    "$oid": "666d2176dfc32b33983a50b8"
+  },
+  "firstName": "Vip Kit Clean",
+  "lastName": "tôi",
+  "email": "Vector Sneaker ",
+  "address": "cxzcxzc"
+}]

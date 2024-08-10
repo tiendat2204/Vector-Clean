@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "660ec2613b9a5caf6f07adaa"
+  },
+  "name": "Dụng cụ vệ sinh",
+  "status": "Active",
+  "id": "5"
+},
+{
+  "_id": {
+    "$oid": "66437592058400a1cbda5d02"
+  },
+  "name": "Xịt thơm",
+  "status": "Active"
+},
+{
+  "_id": {
+    "$oid": "66437592058400a1cbda5d03"
+  },
+  "name": "Dung dịch",
+  "status": "Active"
+},
+{
+  "_id": {
+    "$oid": "66437592058400a1cbda5d04"
+  },
+  "name": "Tẩy ố",
+  "status": "Active"
+},
+{
+  "_id": {
+    "$oid": "66437592058400a1cbda5d05"
+  },
+  "name": "Bộ Kits",
+  "status": "Active",
+  "productCount": 0
+}]
